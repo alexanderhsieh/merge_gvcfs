@@ -1,0 +1,5 @@
+{
+  "merge_gvcfs.outprefix": "String",
+  "merge_gvcfs.gvcfs": "Array[File]"
+}
+
