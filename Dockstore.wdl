@@ -56,7 +56,7 @@ task bcftools_merge {
   String outfname = "${outprefix}.g.vcf.gz"
 
   command {
-    bcftools merge -l ${write_lines(gvcfs)} -o ${outfname} -O -v
+    bcftools merge -l ${write_lines(gvcfs)} -o ${outfname} -O v
   }
 
   runtime {
