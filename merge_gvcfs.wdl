@@ -16,10 +16,12 @@
 workflow merge_gvcfs {
 
   Array[File] gvcfs
+  Array[File] index_files
   String outprefix
 
   parameter_meta {
     gvcfs: "array of files representing single-sample gvcfs"
+    index_files: "array of corresponding index files"
     outprefix: "string; output file prefix (to be appended to .g.vcf.gz)"
   }
   meta{
@@ -30,6 +32,7 @@ workflow merge_gvcfs {
   call bcftools_merge {
     input:
     gvcfs = gvcfs,
+    index_files = index_files,
     outprefix = outprefix
 
   }
@@ -52,6 +55,7 @@ workflow merge_gvcfs {
 # merges array of single-sample gvcfs into a single cohort gvcf
 task bcftools_merge {
   Array[File] gvcfs
+  Array[File] index_files
   String outprefix
   String outfname = "${outprefix}.g.vcf.gz"
 
